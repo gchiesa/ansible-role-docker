@@ -1,0 +1,6 @@
+---
+# handlers file for gchiesa.docker
+- name: Start docker engine
+  service: name=docker.socket state=started
+  service: name=docker state=started
+  

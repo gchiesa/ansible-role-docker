@@ -1,0 +1,10 @@
+---
+# tasks file for gchiesa.docker
+
+- include: yum.yml
+- include: docker.yml
+- include: docker-folders.yml
+- include: docker-compose.yml
+- include: reboot.yml
+- name: Starting docker service
+  service: name=docker state=started

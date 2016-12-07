@@ -1,0 +1,4 @@
+---
+# defaults file for gchiesa.docker
+proxy: "http://www-proxy-ukc1.uk.oracle.com:80"
+docker_storage_driver_options: "--storage-driver=overlay"

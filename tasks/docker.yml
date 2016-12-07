@@ -1,0 +1,17 @@
+---
+- name: Docker proxy configuration
+  template: src=http-proxy.conf dest=/etc/systemd/system/docker.service.d/http-proxy.conf
+  when: proxy != ""
+
+- name: Docker network daemon configuration
+  copy: src=docker-network dest=/etc/sysconfig/docker-network
+
+- name: Docker storage configuration
+  template: src=docker-storage dest=/etc/sysconfig/docker-storage
+
+- name: Disabling selinux
+  selinux: state=disabled
+  register: selinux
+
+- name: Enable docker service
+  service: name=docker enabled=yes

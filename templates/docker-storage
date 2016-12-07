@@ -1,0 +1,2 @@
+# /etc/sysconfig/docker-storage
+DOCKER_STORAGE_OPTIONS={{ docker_storage_driver_options }}
