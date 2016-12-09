@@ -1,38 +1,35 @@
-Role Name
-=========
+gchiesa.oel7docker
+==================
 
-A brief description of the role goes here.
+Setup the docker engine with docker-compose support on Oracle Linux 7 machines
 
-Requirements
-------------
+It also creates a shared folder /docker where to build docker containers and accessible for all users part of the docker group
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This playbook will restart the machine (if required) because docker uses a more recent kernel than the one shipped with the standard distribution
 
 Role Variables
 --------------
+```
+# proxy server to use to install packages
+proxy: ""
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+# storage driver to use for docker engine
+docker_storage_driver_options: "--storage-driver=overlay"
 
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+# iptable configuration file
+iptables_config: "/etc/sysconfig/iptables"
+```
 
 Example Playbook
 ----------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
+    - hosts: docker-servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: gchiesa.docker, proxy: "http://www.proxy.com" }
 
 License
 -------
 
 BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
