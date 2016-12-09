@@ -2,9 +2,13 @@
 # tasks file for gchiesa.docker
 
 - include: yum.yml
+- include: firewall.yml
 - include: docker.yml
 - include: docker-folders.yml
 - include: docker-compose.yml
 - include: reboot.yml
 - name: Starting docker service
-  service: name=docker state=started
+  service: name=docker state=restarted
+  changed_when: True
+- name: Iptables save
+  shell: iptables-save > "{{ iptables_config }}"
