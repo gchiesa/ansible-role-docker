@@ -1,17 +1,20 @@
 ---
-# - name: Update system
-#   yum: name=* state=latest
-#   environment:
-#     http_proxy: "{{ proxy }}"
-#     https_proxy: "{{ proxy }}"
-
-- name: Install yum-utils
-  yum: name="yum-utils" state=installed
+- name: Install yum required packages
+  yum: name={{ item }} state=installed
+  with_items:
+    - yum-utils
+    - net-tools
+    - nc
+    - iptables-services
   environment:
     http_proxy: "{{ proxy }}"
     https_proxy: "{{ proxy }}"
   tags: yum
 
+- name: Remove firewalld service
+  yum: name=firewalld state=removed
+  tags: yum
+  
 - name: Config addons
   command: yum-config-manager --enable ol7_addons
   tags: yum
