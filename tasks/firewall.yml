@@ -1,0 +1,10 @@
+---
+- name: Setup iptables firewall
+  service: name=iptables state=started enabled=yes
+
+- name: Ensure the DOCKER chains are present
+  command: iptables -t {{ item }} -N DOCKER
+  ignore_errors: true
+  with_items:
+    - nat
+    - filter
