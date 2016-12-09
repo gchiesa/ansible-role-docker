@@ -1,5 +1,11 @@
 ---
 # defaults file for gchiesa.docker
-proxy: "http://www-proxy-ukc1.uk.oracle.com:80"
+
+# proxy server to use to install packages
+proxy: ""
+
+# storage driver to use for docker engine
 docker_storage_driver_options: "--storage-driver=overlay"
+
+# iptable configuration file
 iptables_config: "/etc/sysconfig/iptables"
