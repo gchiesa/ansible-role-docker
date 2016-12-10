@@ -9,5 +9,5 @@ galaxy_info:
     - name: Oracle Linux
       versions:
         - 7
-  galaxy_tags: [docker, oraclelinux, docker_compose]
+  galaxy_tags: [docker, oraclelinux, dockercompose]
 dependencies: []
