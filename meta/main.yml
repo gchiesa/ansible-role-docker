@@ -6,7 +6,7 @@ galaxy_info:
   license: BSD
   min_ansible_version: 1.4
   platforms:
-    - name: OEL
+    - name: EL
       versions:
         - 7
   galaxy_tags: [docker, oraclelinux, dockercompose]
