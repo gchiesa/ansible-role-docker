@@ -5,7 +5,7 @@ galaxy_info:
   company:
   license: BSD
   min_ansible_version: 1.4
-  platform:
+  platforms:
     - name: Oracle Linux
       versions:
         - 7
