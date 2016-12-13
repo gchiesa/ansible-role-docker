@@ -5,7 +5,10 @@
 proxy: ""
 
 # storage driver to use for docker engine
-docker_storage_driver_options: "--storage-driver=overlay"
+docker_storage_driver_options: "--storage-driver=devicemapper"
 
 # iptable configuration file
 iptables_config: "/etc/sysconfig/iptables"
+
+# disable selinux
+disable_selinux: false

@@ -12,6 +12,7 @@
 - name: Disabling selinux
   selinux: state=disabled
   register: selinux
+  when: disable_selinux == true
 
 - name: Enable docker service
   service: name=docker enabled=yes

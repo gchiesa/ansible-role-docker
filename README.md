@@ -1,4 +1,4 @@
-gchiesa.oel7docker
+gchiesa.docker
 ==================
 
 Setup the docker engine with docker-compose support on Oracle Linux 7 machines
@@ -14,10 +14,13 @@ Role Variables
 proxy: ""
 
 # storage driver to use for docker engine
-docker_storage_driver_options: "--storage-driver=overlay"
+docker_storage_driver_options: "--storage-driver=devicemapper"
 
 # iptable configuration file
 iptables_config: "/etc/sysconfig/iptables"
+
+# disable selinux
+disable_selinux: false
 ```
 
 Example Playbook

@@ -3,8 +3,12 @@
   group: name=docker state=present
 
 - name: Creating /docker folder
-  file: name=/docker
-    owner=root group=docker
-    state=directory
-    mode=2770
-      
+  file:
+    name: '/docker'
+    owner: root
+    group: docker
+    state: directory
+    mode: 2770
+    setype: svirt_sandbox_file_t
+    recurse: yes
+    
