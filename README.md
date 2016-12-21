@@ -1,7 +1,7 @@
 gchiesa.docker
-==================
+==============
 
-Setup the docker engine with docker-compose support on Oracle Linux 7 machines
+Setup the docker engine with docker-compose support on Oracle Linux 7 and CentOS 7 machines
 
 It also creates a shared folder /docker where to build docker containers and accessible for all users part of the docker group
 
