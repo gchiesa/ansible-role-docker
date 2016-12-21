@@ -1,0 +1,7 @@
+---
+- name: Install docker engine
+  yum: name="docker" state=installed
+  environment:
+    http_proxy: "{{ proxy }}"
+    https_proxy: "{{ proxy }}"
+  tags: yum
