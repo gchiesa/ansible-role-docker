@@ -14,9 +14,18 @@
 - name: Remove firewalld service
   yum: name=firewalld state=removed
   tags: yum
+  
+- name: Config addons
+  command: yum-config-manager --enable ol7_addons
+  tags: yum
 
-- include: yum_oel.yml
-  when: ansible_distribution == 'OracleLinux'
+- name: Enable UEK4 repo
+  copy: src=files/public-yum-ol7-uek4.repo dest=/etc/yum.repos.d/public-yum-ol7-uek4.repo
+  tags: yum
 
-- include: yum_centos.yml
-  when: ansible_distribution == 'CentOS'
+- name: Install docker engine
+  yum: name="docker-engine" state=installed
+  environment:
+    http_proxy: "{{ proxy }}"
+    https_proxy: "{{ proxy }}"
+  tags: yum
