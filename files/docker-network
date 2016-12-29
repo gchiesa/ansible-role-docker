@@ -1,2 +1,2 @@
 # /etc/sysconfig/docker-network
-DOCKER_NETWORK_OPTIONS="-H unix:///var/run/docker.sock -H tcp://0.0.0.0:2375"
+DOCKER_NETWORK_OPTIONS="-H unix:///var/run/docker.sock -H tcp://0.0.0.0:2375 --dns-search=docker "
