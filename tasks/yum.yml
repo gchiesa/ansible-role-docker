@@ -6,6 +6,7 @@
     - net-tools
     - nc
     - iptables-services
+    - ntp
   environment:
     http_proxy: "{{ proxy }}"
     https_proxy: "{{ proxy }}"
