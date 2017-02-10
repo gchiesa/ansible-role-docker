@@ -1,13 +1,14 @@
 ---
 galaxy_info:
   author: Giuseppe Chiesa
-  description: Docker / Docker Compose support for Oracle Linux
+  description: Docker / Docker Compose support for Enterprise Linux
   company:
   license: BSD
-  min_ansible_version: 1.4
+  min_ansible_version: 2.0
   platforms:
     - name: EL
       versions:
         - 7
-  galaxy_tags: [docker, oraclelinux, dockercompose]
+  galaxy_tags: [docker, dockercompose]
 dependencies: []
+
