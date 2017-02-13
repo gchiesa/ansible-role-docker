@@ -6,6 +6,7 @@
 - include: docker.yml
 - include: docker-folders.yml
 - include: docker-compose.yml
+- include: ansible-docker.yml
 - include: reboot.yml
 - name: Starting docker service
   service: name=docker state=restarted
