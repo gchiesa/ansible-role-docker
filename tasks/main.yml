@@ -8,8 +8,12 @@
 - include: docker-compose.yml
 - include: ansible-docker.yml
 - include: reboot.yml
+
 - name: Starting docker service
-  service: name=docker state=restarted
-  changed_when: True
+  service:
+    enabled: yes 
+    name: docker 
+    state: started
+
 - name: Iptables save
   shell: iptables-save > "{{ iptables_config }}"
