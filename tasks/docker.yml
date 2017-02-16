@@ -1,5 +1,14 @@
 ---
 - name: Docker proxy configuration
+  file:
+    name: /etc/systemd/system/docker.service.d/
+    owner: root
+    group: root
+    state: directory
+    recurse: yes
+  when: proxy != ""
+
+- name: Docker proxy configuration
   template: src=http-proxy.conf dest=/etc/systemd/system/docker.service.d/http-proxy.conf
   when: proxy != ""
 
@@ -12,7 +21,16 @@
 - name: Disabling selinux
   selinux: state=disabled
   register: selinux
-  when: disable_selinux == true
+  when: disable_selinux|bool == True
+
+- name: Enable ntpd service
+  service: 
+    name: ntpd
+    enabled: yes
+    state: started
 
 - name: Enable docker service
-  service: name=docker enabled=yes
+  service: 
+    name: docker 
+    enabled: yes
+

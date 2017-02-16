@@ -13,7 +13,7 @@
   service:
     enabled: yes 
     name: docker 
-    state: started
+    state: restarted
 
 - name: Iptables save
   shell: iptables-save > "{{ iptables_config }}"
