@@ -1,0 +1,40 @@
+---
+- name: Check if pip is installed
+  shell: which pip
+  ignore_errors: true
+  register: pip_ok
+
+- name: Download pip
+  when: pip_ok.rc != 0
+  get_url: url=https://bootstrap.pypa.io/get-pip.py
+    dest=/tmp/get-pip.py
+  environment:
+    http_proxy: "{{ proxy }}"
+    https_proxy: "{{ proxy }}"
+
+- name: Install pip
+  when: pip_ok.rc != 0
+  shell: python /tmp/get-pip.py
+  environment:
+    http_proxy: "{{ proxy }}"
+    https_proxy: "{{ proxy }}"
+
+- name: Uninstall docker_py
+  pip:
+    name: '{{ item }}'
+    state: absent
+  environment:
+    http_proxy: "{{ proxy }}"
+    https_proxy: "{{ proxy }}"
+  with_items:
+    - docker_py
+    - docker-py
+
+- name: Install ansible docker
+  pip:
+    name: '{{ item }}'
+  environment:
+    http_proxy: "{{ proxy }}"
+    https_proxy: "{{ proxy }}"
+  with_items:
+    - docker

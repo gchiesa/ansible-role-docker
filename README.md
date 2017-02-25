@@ -21,6 +21,9 @@ iptables_config: "/etc/sysconfig/iptables"
 
 # disable selinux
 disable_selinux: false
+
+# support for shared storage between docker nodes
+use_glusterfs: true
 ```
 
 Example Playbook

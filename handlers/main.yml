@@ -1,8 +1,2 @@
 ---
 # handlers file for gchiesa.docker
-- name: Start docker engine
-  service: name=docker.socket state=started
-  service: name=docker state=started
-
-- name: iptables reload
-  service: name=iptables state=reloaded

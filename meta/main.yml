@@ -10,5 +10,6 @@ galaxy_info:
       versions:
         - 7
   galaxy_tags: [docker, dockercompose]
-dependencies: []
+dependencies: 
+    - { role: 'gchiesa.glusterfs', extra_modules: ['docker'] }
 
