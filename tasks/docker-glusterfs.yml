@@ -1,0 +1,27 @@
+---
+- name: Creating /docker folder
+  file:
+    name: '/docker'
+    owner: root
+    group: docker
+    state: directory
+    mode: 2770
+    setype: svirt_sandbox_file_t
+    recurse: yes
+
+- name: Set the fstab for glusterfs
+  mount:   
+    name: /docker
+    src: "{{ inventory_hostname }}:{{ gluster_docker_volume }}"
+    fstype: glusterfs
+    state: mounted
+
+- name: Creating /docker folder
+  file:
+    name: '/docker'
+    owner: root
+    group: docker
+    state: directory
+    mode: 2770
+    setype: svirt_sandbox_file_t
+    recurse: yes

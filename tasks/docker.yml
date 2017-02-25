@@ -1,4 +1,7 @@
 ---
+- name: Creating docker group
+  group: name=docker state=present
+    
 - name: Docker proxy configuration
   file:
     name: /etc/systemd/system/docker.service.d/

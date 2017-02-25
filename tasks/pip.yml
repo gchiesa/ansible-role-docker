@@ -30,7 +30,7 @@
     - docker_py
     - docker-py
 
-- name: Install ansible docker
+- name: Install ansible support for docker
   pip:
     name: '{{ item }}'
   environment:
@@ -38,3 +38,5 @@
     https_proxy: "{{ proxy }}"
   with_items:
     - docker
+    - docker-compose==1.9.0
+    

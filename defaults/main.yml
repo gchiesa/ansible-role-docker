@@ -12,3 +12,7 @@ iptables_config: "/etc/sysconfig/iptables"
 
 # disable selinux
 disable_selinux: false
+
+# docker_options: '--selinux-enabled --log-driver=journald --signature-verification=false'
+
+use_glusterfs: true

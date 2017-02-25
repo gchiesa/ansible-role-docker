@@ -1,7 +1,4 @@
 ---
-- name: Creating docker group
-  group: name=docker state=present
-
 - name: Creating /docker folder
   file:
     name: '/docker'

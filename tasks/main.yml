@@ -1,12 +1,24 @@
 ---
 # tasks file for gchiesa.docker
+- name: Selinux check
+  shell: >
+    /bin/false || echo "Selinux must be disabled if is used with glusterfs"
+  when:
+    - use_glusterfs|bool == True
+    - disable_selinux|bool == False
 
 - include: yum.yml
+- include: pip.yml
 - include: firewall.yml
 - include: docker.yml
+
+# if we use glusterfs we include the folder and the gluster role
 - include: docker-folders.yml
-- include: docker-compose.yml
-- include: ansible-docker.yml
+  when: use_glusterfs|bool == False
+
+- include: docker-glusterfs.yml
+  when: use_glusterfs|bool == True
+
 - include: reboot.yml
 
 - name: Starting docker service
