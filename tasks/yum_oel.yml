@@ -8,8 +8,15 @@
   tags: yum
 
 - name: Install docker engine
-  yum: name="docker-engine" state=installed
+  yum: 
+    name: "{{ item }}"
+    state: installed
   environment:
     http_proxy: "{{ proxy }}"
     https_proxy: "{{ proxy }}"
   tags: yum
+  with_items: 
+    - iptables-services
+    - docker_engine 
+
+
