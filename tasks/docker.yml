@@ -18,6 +18,16 @@
 - name: Docker network daemon configuration
   copy: src=docker-network dest=/etc/sysconfig/docker-network
 
+- name: Docker network daemon configuration (AMI Linux)
+  blockinfile:
+    dest: /etc/sysconfig/docker 
+    block: |
+      source /etc/sysconfig/docker-network
+      OPTIONS="$OPTIONS $DOCKER_NETWORK_OPTIONS"
+    backup: yes
+  when: 
+    - ansible_distribution == 'Amazon'
+        
 - name: Docker storage configuration
   template: src=docker-storage dest=/etc/sysconfig/docker-storage
 

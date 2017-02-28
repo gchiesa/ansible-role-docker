@@ -5,8 +5,9 @@
     - yum-utils
     - net-tools
     - nc
-    - iptables-services
     - ntp
+    - libselinux-python
+    - selinux-policy
   environment:
     http_proxy: "{{ proxy }}"
     https_proxy: "{{ proxy }}"
@@ -20,4 +21,6 @@
   when: ansible_distribution == 'OracleLinux'
 
 - include: yum_centos.yml
-  when: ansible_distribution == 'CentOS'
+  when: (ansible_distribution == 'CentOS') or
+        (ansible_distribution == 'RedHat') or 
+        (ansible_distribution == 'Amazon')
